@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 import com.cibermall.model.Usuario;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
+public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
     Optional<Usuario> findByCorreo(String correo);
 }

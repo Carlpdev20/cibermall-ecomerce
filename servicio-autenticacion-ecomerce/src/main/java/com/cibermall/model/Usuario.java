@@ -54,23 +54,9 @@ public class Usuario {
     @Column(name = "FECHA_ACTUALIZACION")
     private LocalDateTime fechaActualizacion;
 
-    @Column(name = "FECHA_REGISTRO", updatable = false)
+    @Column(name = "FECHA_REGISTRO")
     private LocalDateTime fechaRegistro;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "ROL", nullable = false)
-    private Rol rol;
-
-    @PrePersist
-    protected void onCreate() {
-        this.fechaRegistro = LocalDateTime.now();
-        if (this.estado == null) {
-            this.estado = 1; 
-        }
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        this.fechaActualizacion = LocalDateTime.now();
-    }
+    @Column(name = "ROL", length = 20, nullable = false)
+    private String rol; 
 }
