@@ -1,31 +1,20 @@
-package com.cibermall.entity;
+package com.cibermall.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import lombok.Data;
 
-@Entity
 @Data
+public class VentaResponse {
 
-public class Venta {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer usuarioId;
     private BigDecimal total;
     private String estado;
     private LocalDateTime fechaRegistro;
-    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL)
-    private List<DetalleVenta> detalles;
+    private List<DetalleVentaResponse> detalles;
 	public Integer getId() {
 		return id;
 	}
@@ -56,10 +45,10 @@ public class Venta {
 	public void setFechaRegistro(LocalDateTime fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
 	}
-	public List<DetalleVenta> getDetalles() {
+	public List<DetalleVentaResponse> getDetalles() {
 		return detalles;
 	}
-	public void setDetalles(List<DetalleVenta> detalles) {
+	public void setDetalles(List<DetalleVentaResponse> detalles) {
 		this.detalles = detalles;
 	}
     

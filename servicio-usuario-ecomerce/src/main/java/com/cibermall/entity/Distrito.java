@@ -1,26 +1,46 @@
 package com.cibermall.entity;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.Data;
+
 @Entity
-@Table(name = "TB_DISTRITO")
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Distrito {
+	    @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    private Integer id;
+	    private String nombre;
+	    private BigDecimal costoEnvio;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_DISTRITO")
-    private Integer idDistrito;
+		public Integer getId() {
+			return id;
+		}
 
-    @Column(name = "NOMBRE", length = 50, nullable = false)
-    private String nombre;
+		public void setId(Integer id) {
+			this.id = id;
+		}
 
-    @Column(name = "COSTO_ENVIO", precision = 8, scale = 2)
-    private BigDecimal costoEnvio;
+		public String getNombre() {
+			return nombre;
+		}
+
+		public void setNombre(String nombre) {
+			this.nombre = nombre;
+		}
+
+		public BigDecimal getCostoEnvio() {
+			return costoEnvio;
+		}
+
+		public void setCostoEnvio(BigDecimal costoEnvio) {
+			this.costoEnvio = costoEnvio;
+		}
+	    
+	    
+	
 }

@@ -1,37 +1,29 @@
-package com.cibermall.entity;
+package com.cibermall.dto;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
-@Entity
 @Data
-public class Usuario {
+public class UsuarioResponse {
 
-	    @Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Integer id;
 	    private String nombres;
 	    private String apePaterno;
 	    private String apeMaterno;
 	    private String correo;
-	    private String clave;
 	    private String nroDoc;
 	    private String direccion;
 	    private String telefono;
 	    private Boolean estado;
-	    private LocalDateTime ultimoAcceso;
-	    private LocalDateTime fechaActualizacion;
 	    private LocalDateTime fechaRegistro;
-	    @ManyToOne
-	    private Distrito distrito;
-	    @ManyToOne
-	    private Rol rol;
+	    private Integer distritoId;
+	    private String distritoNombre;
+	    private BigDecimal costoEnvio;
+	    private Integer rolId;
+	    private String rolCodigo;
+	    private String rolDescripcion;
 		public Integer getId() {
 			return id;
 		}
@@ -62,12 +54,6 @@ public class Usuario {
 		public void setCorreo(String correo) {
 			this.correo = correo;
 		}
-		public String getClave() {
-			return clave;
-		}
-		public void setClave(String clave) {
-			this.clave = clave;
-		}
 		public String getNroDoc() {
 			return nroDoc;
 		}
@@ -92,36 +78,48 @@ public class Usuario {
 		public void setEstado(Boolean estado) {
 			this.estado = estado;
 		}
-		public LocalDateTime getUltimoAcceso() {
-			return ultimoAcceso;
-		}
-		public void setUltimoAcceso(LocalDateTime ultimoAcceso) {
-			this.ultimoAcceso = ultimoAcceso;
-		}
-		public LocalDateTime getFechaActualizacion() {
-			return fechaActualizacion;
-		}
-		public void setFechaActualizacion(LocalDateTime fechaActualizacion) {
-			this.fechaActualizacion = fechaActualizacion;
-		}
 		public LocalDateTime getFechaRegistro() {
 			return fechaRegistro;
 		}
 		public void setFechaRegistro(LocalDateTime fechaRegistro) {
 			this.fechaRegistro = fechaRegistro;
 		}
-		public Distrito getDistrito() {
-			return distrito;
+		public Integer getDistritoId() {
+			return distritoId;
 		}
-		public void setDistrito(Distrito distrito) {
-			this.distrito = distrito;
+		public void setDistritoId(Integer distritoId) {
+			this.distritoId = distritoId;
 		}
-		public Rol getRol() {
-			return rol;
+		public String getDistritoNombre() {
+			return distritoNombre;
 		}
-		public void setRol(Rol rol) {
-			this.rol = rol;
+		public void setDistritoNombre(String distritoNombre) {
+			this.distritoNombre = distritoNombre;
 		}
-	
+		public BigDecimal getCostoEnvio() {
+			return costoEnvio;
+		}
+		public void setCostoEnvio(BigDecimal costoEnvio) {
+			this.costoEnvio = costoEnvio;
+		}
+		public Integer getRolId() {
+			return rolId;
+		}
+		public void setRolId(Integer rolId) {
+			this.rolId = rolId;
+		}
+		public String getRolCodigo() {
+			return rolCodigo;
+		}
+		public void setRolCodigo(String rolCodigo) {
+			this.rolCodigo = rolCodigo;
+		}
+		public String getRolDescripcion() {
+			return rolDescripcion;
+		}
+		public void setRolDescripcion(String rolDescripcion) {
+			this.rolDescripcion = rolDescripcion;
+		}
 	    
+	
 }

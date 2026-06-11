@@ -1,22 +1,44 @@
 package com.cibermall.entity;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "TB_ROL")
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Rol {
+	    @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    private Integer id;
+	    private String codigo;
+	    private String descripcion;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_ROL")
-    private Integer idRol;
+		public Integer getId() {
+			return id;
+		}
 
-    @Column(name = "DESCRIPCION", length = 1, nullable = false)
-    private String descripcion;
+		public void setId(Integer id) {
+			this.id = id;
+		}
+
+		public String getCodigo() {
+			return codigo;
+		}
+
+		public void setCodigo(String codigo) {
+			this.codigo = codigo;
+		}
+
+		public String getDescripcion() {
+			return descripcion;
+		}
+
+		public void setDescripcion(String descripcion) {
+			this.descripcion = descripcion;
+		}
+	    
+	    
+	
 }

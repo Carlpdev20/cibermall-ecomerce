@@ -73,4 +73,126 @@ public class Usuario {
     protected void onUpdate() {
         this.fechaActualizacion = LocalDateTime.now();
     }
+
+	public Integer getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Integer idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	public String getClave() {
+		return clave;
+	}
+
+	public void setClave(String clave) {
+		this.clave = clave;
+	}
+
+	public Integer getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Integer estado) {
+		this.estado = estado;
+	}
+
+	public String getNombres() {
+		return nombres;
+	}
+
+	public void setNombres(String nombres) {
+		this.nombres = nombres;
+	}
+
+	public String getApePaterno() {
+		return apePaterno;
+	}
+
+	public void setApePaterno(String apePaterno) {
+		this.apePaterno = apePaterno;
+	}
+
+	public String getApeMaterno() {
+		return apeMaterno;
+	}
+
+	public void setApeMaterno(String apeMaterno) {
+		this.apeMaterno = apeMaterno;
+	}
+
+	public String getNroDoc() {
+		return nroDoc;
+	}
+
+	public void setNroDoc(String nroDoc) {
+		this.nroDoc = nroDoc;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public Integer getIdDistrito() {
+		return idDistrito;
+	}
+
+	public void setIdDistrito(Integer idDistrito) {
+		this.idDistrito = idDistrito;
+	}
+
+	public LocalDateTime getUltimoAcceso() {
+		return ultimoAcceso;
+	}
+
+	public void setUltimoAcceso(LocalDateTime ultimoAcceso) {
+		this.ultimoAcceso = ultimoAcceso;
+	}
+
+	public LocalDateTime getFechaActualizacion() {
+		return fechaActualizacion;
+	}
+
+	public void setFechaActualizacion(LocalDateTime fechaActualizacion) {
+		this.fechaActualizacion = fechaActualizacion;
+	}
+
+	public LocalDateTime getFechaRegistro() {
+		return fechaRegistro;
+	}
+
+	public void setFechaRegistro(LocalDateTime fechaRegistro) {
+		this.fechaRegistro = fechaRegistro;
+	}
+
+	public Rol getRol() {
+		return rol;
+	}
+
+	public void setRol(Rol rol) {
+		this.rol = rol;
+	}
+    
+    
 }

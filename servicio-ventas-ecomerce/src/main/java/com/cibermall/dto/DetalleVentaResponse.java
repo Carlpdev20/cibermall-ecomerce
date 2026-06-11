@@ -1,27 +1,17 @@
-package com.cibermall.entity;
+package com.cibermall.dto;
 
 import java.math.BigDecimal;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
-@Entity
 @Data
-public class DetalleVenta {
+public class DetalleVentaResponse {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer productoId;
     private Integer cantidad;
     private BigDecimal precioUnitario;
     private BigDecimal subtotal;
-    @ManyToOne
-    private Venta venta;
 	public Integer getId() {
 		return id;
 	}
@@ -51,12 +41,6 @@ public class DetalleVenta {
 	}
 	public void setSubtotal(BigDecimal subtotal) {
 		this.subtotal = subtotal;
-	}
-	public Venta getVenta() {
-		return venta;
-	}
-	public void setVenta(Venta venta) {
-		this.venta = venta;
 	}
     
     
