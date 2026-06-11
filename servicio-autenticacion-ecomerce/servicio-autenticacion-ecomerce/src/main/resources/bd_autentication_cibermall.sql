@@ -82,5 +82,3 @@ INSERT INTO TB_DISTRITO (NOMBRE, COSTO_ENVIO) VALUES
 ('La Punta',                    12.00),
 ('Mi Perú',                     12.00),
 ('Ventanilla',                  14.00);
-
-select * from tb_usuario;
