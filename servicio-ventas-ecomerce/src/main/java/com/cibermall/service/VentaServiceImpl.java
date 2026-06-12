@@ -3,7 +3,9 @@ package com.cibermall.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.cibermall.dto.PedidoVentaDTO;
 import com.cibermall.dto.VentaRequest;
 import com.cibermall.dto.VentaResponse;
 import com.cibermall.entity.Venta;
@@ -60,4 +62,13 @@ public class VentaServiceImpl implements VentaService {
                 .map(ventaMapper::toResponse)
                 .toList();
     }
+    
+    @Override
+    public void crearVentasDesdePedido(PedidoVentaDTO pedido) {
+        Venta venta = ventaMapper.toVentaDesdePedido(pedido);
+        ventaRepository.save(venta);
+    }
+
+	
+	
 }

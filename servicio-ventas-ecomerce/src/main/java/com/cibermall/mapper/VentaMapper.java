@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.cibermall.dto.DetalleVentaResponse;
+import com.cibermall.dto.PedidoVentaDTO;
 import com.cibermall.dto.VentaRequest;
 import com.cibermall.dto.VentaResponse;
 import com.cibermall.entity.DetalleVenta;
@@ -81,5 +82,33 @@ public class VentaMapper {
         response.setDetalles(detalles);
 
         return response;
+    }
+    public Venta toVentaDesdePedido(PedidoVentaDTO pedido) {
+        Venta venta = new Venta();
+
+//        venta.setId(pedido.getPedidoId());
+        venta.setUsuarioId(pedido.getUsuarioId());
+        venta.setEstado("GENERADA");
+        venta.setFechaRegistro(LocalDateTime.now());
+        venta.setTotal(pedido.getTotal());
+
+        List<DetalleVenta> detalles = pedido.getDetalles()
+                .stream()
+                .map(detallePedido -> {
+                    DetalleVenta detalleVenta = new DetalleVenta();
+
+                    detalleVenta.setVenta(venta);
+                    detalleVenta.setProductoId(detallePedido.getProductoId());
+                    detalleVenta.setCantidad(detallePedido.getCantidad());
+                    detalleVenta.setPrecioUnitario(detallePedido.getPrecioUnitario());
+                    detalleVenta.setSubtotal(detallePedido.getSubtotal());
+
+                    return detalleVenta;
+                })
+                .toList();
+
+        venta.setDetalles(detalles);
+
+        return venta;
     }
 }

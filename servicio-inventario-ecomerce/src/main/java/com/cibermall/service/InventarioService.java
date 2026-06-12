@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.cibermall.dto.InventarioRequest;
 import com.cibermall.dto.InventarioResponse;
+import com.cibermall.dto.PedidoInventarioDTO;
 
 public interface InventarioService {
 
@@ -16,4 +17,6 @@ public interface InventarioService {
     InventarioResponse aumentarStock(Integer productoId, Integer cantidad);
 
     InventarioResponse disminuirStock(Integer productoId, Integer cantidad);
+    
+    void descontarStockPorPedido(PedidoInventarioDTO dto);
 }

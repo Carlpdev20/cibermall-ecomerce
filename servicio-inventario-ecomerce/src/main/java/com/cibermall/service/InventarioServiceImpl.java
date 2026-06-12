@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.cibermall.dto.InventarioRequest;
 import com.cibermall.dto.InventarioResponse;
+import com.cibermall.dto.PedidoInventarioDTO;
 import com.cibermall.entity.Inventario;
 import com.cibermall.mapper.InventarioMapper;
 import com.cibermall.repository.InventarioRepository;
@@ -82,5 +83,20 @@ public class InventarioServiceImpl implements InventarioService {
         inventario.setStock(inventario.getStock() - cantidad);
 
         return inventarioMapper.toResponse(inventarioRepository.save(inventario));
+    }
+    @Override
+    public void descontarStockPorPedido(PedidoInventarioDTO pedido) {
+
+        pedido.getDetalles().forEach(detalle -> {
+            Inventario inventario = inventarioRepository.findByProductoId(detalle.getProductoId())
+                    .orElseThrow(() -> new RuntimeException("No existe inventario para producto ID: " + detalle.getProductoId()));
+
+            if (inventario.getStock() < detalle.getCantidad()) {
+                throw new RuntimeException("Stock insuficiente para producto ID: " + detalle.getProductoId());
+            }
+
+            inventario.setStock(inventario.getStock() - detalle.getCantidad());
+            inventarioRepository.save(inventario);
+        });
     }
 }

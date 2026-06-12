@@ -31,7 +31,8 @@ public class SecurityConfig {
                 .requestMatchers(
                     "/auth/login",
                     "/auth/registrar",
-                    "/auth/distritos"
+                    "/auth/distritos",
+                    "/api/pedidos/**"
                 ).permitAll()
                 .anyRequest().authenticated()
             )

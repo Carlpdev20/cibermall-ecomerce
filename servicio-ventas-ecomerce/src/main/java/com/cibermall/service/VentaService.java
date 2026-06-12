@@ -2,6 +2,7 @@ package com.cibermall.service;
 
 import java.util.List;
 
+import com.cibermall.dto.PedidoVentaDTO;
 import com.cibermall.dto.VentaRequest;
 import com.cibermall.dto.VentaResponse;
 
@@ -14,4 +15,6 @@ public interface VentaService {
     List<VentaResponse> findAll();
 
     List<VentaResponse> findByUsuarioId(Integer usuarioId);
+    
+    void crearVentasDesdePedido(PedidoVentaDTO pedido);
 }
