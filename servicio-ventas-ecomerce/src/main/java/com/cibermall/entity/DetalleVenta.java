@@ -1,44 +1,63 @@
 package com.cibermall.entity;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import lombok.Data;
+
 @Entity
-@Table(name = "TB_DETALLE_VENTA")
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class DetalleVenta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_DETALLE_VENTA")
-    private Integer idDetalleVenta;
-
-    @Column(name = "ID_PRODUCTO", nullable = false)
-    private Integer idProducto;
-
-    @Column(name = "CANTIDAD", nullable = false)
-    private Short cantidad;
-
-    @Column(name = "SUB_TOTAL", precision = 10, scale = 2, nullable = false)
-    private BigDecimal subTotal;
-
-    @Column(name = "PRECIO_VENTA", precision = 10, scale = 2, nullable = false)
-    private BigDecimal precioVenta;
-
-    @Column(name = "DESCUENTO", precision = 10, scale = 2)
-    private BigDecimal descuento;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ID_VENTA", nullable = false)
+    private Integer id;
+    private Integer productoId;
+    private Integer cantidad;
+    private BigDecimal precioUnitario;
+    private BigDecimal subtotal;
+    @ManyToOne
     private Venta venta;
-
-    @PrePersist
-    protected void onCreate() {
-        if (this.descuento == null) this.descuento = BigDecimal.ZERO;
-    }
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public Integer getProductoId() {
+		return productoId;
+	}
+	public void setProductoId(Integer productoId) {
+		this.productoId = productoId;
+	}
+	public Integer getCantidad() {
+		return cantidad;
+	}
+	public void setCantidad(Integer cantidad) {
+		this.cantidad = cantidad;
+	}
+	public BigDecimal getPrecioUnitario() {
+		return precioUnitario;
+	}
+	public void setPrecioUnitario(BigDecimal precioUnitario) {
+		this.precioUnitario = precioUnitario;
+	}
+	public BigDecimal getSubtotal() {
+		return subtotal;
+	}
+	public void setSubtotal(BigDecimal subtotal) {
+		this.subtotal = subtotal;
+	}
+	public Venta getVenta() {
+		return venta;
+	}
+	public void setVenta(Venta venta) {
+		this.venta = venta;
+	}
+    
+    
 }

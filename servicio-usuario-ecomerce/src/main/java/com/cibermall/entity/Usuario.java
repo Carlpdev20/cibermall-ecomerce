@@ -1,78 +1,127 @@
 package com.cibermall.entity;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import lombok.Data;
+
 @Entity
-@Table(name = "TB_USUARIO")
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Usuario {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_USUARIO")
-    private Integer idUsuario;
-
-    @Column(name = "NOMBRES", length = 50, nullable = false)
-    private String nombres;
-
-    @Column(name = "APE_PATERNO", length = 50, nullable = false)
-    private String apePaterno;
-
-    @Column(name = "APE_MATERNO", length = 50, nullable = false)
-    private String apeMaterno;
-
-    @Column(name = "CORREO", length = 50, nullable = false, unique = true)
-    private String correo;
-
-    @Column(name = "CLAVE", length = 255, nullable = false)
-    private String clave;
-
-    @Column(name = "NRO_DOC", length = 15, nullable = false, unique = true)
-    private String nroDoc;
-
-    @Column(name = "DIRECCION", length = 50)
-    private String direccion;
-
-    @Column(name = "TELEFONO", length = 9, nullable = false)
-    private String telefono;
-
-    // 👇 Nuevos campos de control y auditoría
-    @Column(name = "ESTADO")
-    private Integer estado;
-
-    @Column(name = "ULTIMO_ACCESO")
-    private LocalDateTime ultimoAcceso;
-
-    @Column(name = "FECHA_ACTUALIZACION")
-    private LocalDateTime fechaActualizacion;
-
-    @Column(name = "FECHA_REGISTRO", updatable = false)
-    private LocalDateTime fechaRegistro;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ID_DISTRITO", nullable = false)
-    private Distrito distrito;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ROL", nullable = false)
-    private Rol rol;
-
-    @PrePersist
-    protected void onCreate() {
-        this.fechaRegistro = LocalDateTime.now();
-        if (this.estado == null) {
-            this.estado = 1; // Activo por defecto al registrarse
-        }
-    }
-    
-    @PreUpdate
-    protected void onUpdate() {
-        this.fechaActualizacion = LocalDateTime.now();
-    }
+	    @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    private Integer id;
+	    private String nombres;
+	    private String apePaterno;
+	    private String apeMaterno;
+	    private String correo;
+	    private String clave;
+	    private String nroDoc;
+	    private String direccion;
+	    private String telefono;
+	    private Boolean estado;
+	    private LocalDateTime ultimoAcceso;
+	    private LocalDateTime fechaActualizacion;
+	    private LocalDateTime fechaRegistro;
+	    @ManyToOne
+	    private Distrito distrito;
+	    @ManyToOne
+	    private Rol rol;
+		public Integer getId() {
+			return id;
+		}
+		public void setId(Integer id) {
+			this.id = id;
+		}
+		public String getNombres() {
+			return nombres;
+		}
+		public void setNombres(String nombres) {
+			this.nombres = nombres;
+		}
+		public String getApePaterno() {
+			return apePaterno;
+		}
+		public void setApePaterno(String apePaterno) {
+			this.apePaterno = apePaterno;
+		}
+		public String getApeMaterno() {
+			return apeMaterno;
+		}
+		public void setApeMaterno(String apeMaterno) {
+			this.apeMaterno = apeMaterno;
+		}
+		public String getCorreo() {
+			return correo;
+		}
+		public void setCorreo(String correo) {
+			this.correo = correo;
+		}
+		public String getClave() {
+			return clave;
+		}
+		public void setClave(String clave) {
+			this.clave = clave;
+		}
+		public String getNroDoc() {
+			return nroDoc;
+		}
+		public void setNroDoc(String nroDoc) {
+			this.nroDoc = nroDoc;
+		}
+		public String getDireccion() {
+			return direccion;
+		}
+		public void setDireccion(String direccion) {
+			this.direccion = direccion;
+		}
+		public String getTelefono() {
+			return telefono;
+		}
+		public void setTelefono(String telefono) {
+			this.telefono = telefono;
+		}
+		public Boolean getEstado() {
+			return estado;
+		}
+		public void setEstado(Boolean estado) {
+			this.estado = estado;
+		}
+		public LocalDateTime getUltimoAcceso() {
+			return ultimoAcceso;
+		}
+		public void setUltimoAcceso(LocalDateTime ultimoAcceso) {
+			this.ultimoAcceso = ultimoAcceso;
+		}
+		public LocalDateTime getFechaActualizacion() {
+			return fechaActualizacion;
+		}
+		public void setFechaActualizacion(LocalDateTime fechaActualizacion) {
+			this.fechaActualizacion = fechaActualizacion;
+		}
+		public LocalDateTime getFechaRegistro() {
+			return fechaRegistro;
+		}
+		public void setFechaRegistro(LocalDateTime fechaRegistro) {
+			this.fechaRegistro = fechaRegistro;
+		}
+		public Distrito getDistrito() {
+			return distrito;
+		}
+		public void setDistrito(Distrito distrito) {
+			this.distrito = distrito;
+		}
+		public Rol getRol() {
+			return rol;
+		}
+		public void setRol(Rol rol) {
+			this.rol = rol;
+		}
+	
+	    
 }

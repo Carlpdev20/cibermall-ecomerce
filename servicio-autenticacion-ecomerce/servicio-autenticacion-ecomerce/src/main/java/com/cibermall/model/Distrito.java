@@ -22,4 +22,30 @@ public class Distrito {
 
     @Column(name = "COSTO_ENVIO")
     private Double costoEnvio;
+
+	public Integer getIdDistrito() {
+		return idDistrito;
+	}
+
+	public void setIdDistrito(Integer idDistrito) {
+		this.idDistrito = idDistrito;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public Double getCostoEnvio() {
+		return costoEnvio;
+	}
+
+	public void setCostoEnvio(Double costoEnvio) {
+		this.costoEnvio = costoEnvio;
+	}
+    
+    
 }

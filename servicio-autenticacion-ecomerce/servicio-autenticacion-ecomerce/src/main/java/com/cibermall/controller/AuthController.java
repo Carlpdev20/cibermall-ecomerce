@@ -32,7 +32,7 @@ public class AuthController {
     public ResponseEntity<?> registrar(@RequestBody RegistroUsuarioDTO dto) {
         try {
             // Forzar rol CLIENTE siempre desde el registro público
-            dto.setRol("CLIENTE");
+            dto.setRol(1);
             Usuario usuarioCreado = usuarioService.registrarUsuario(dto);
             // No devolver la clave encriptada
             usuarioCreado.setClave(null);
